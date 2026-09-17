@@ -1,367 +1,276 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bella Sac - Sacs élégants pour femmes. Commande en ligne au Maroc.">
-<title>Bella Sac | Sacs pour femmes</title>
-<style>
-:root{--rose:#b76e79;--rose-dark:#8f4f5b;--cream:#fbf7f5;--text:#292326;--muted:#766d70;--white:#fff;--shadow:0 12px 35px rgba(50,25,30,.10)}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--text);line-height:1.5}
-a{text-decoration:none;color:inherit}
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid #eee}
-.nav{max-width:1150px;margin:auto;height:72px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:Georgia,serif;font-size:27px;font-weight:700;color:var(--rose-dark)}
-nav{display:flex;gap:28px;font-size:14px;font-weight:600}
-nav a:hover{color:var(--rose)}
-.hero{max-width:1150px;margin:auto;padding:65px 20px 55px;display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center}
-.eyebrow{color:var(--rose-dark);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:12px;margin-bottom:14px}
-h1{font-family:Georgia,serif;font-size:clamp(42px,6vw,70px);line-height:1.03;margin-bottom:20px}
-h1 span{color:var(--rose)}
-.hero p{color:var(--muted);max-width:520px;font-size:17px;margin-bottom:28px}
-.btn{display:inline-block;border:0;border-radius:30px;background:var(--rose-dark);color:#fff;padding:14px 25px;font-weight:700;cursor:pointer;transition:.2s}
-.btn:hover{transform:translateY(-2px);background:#743d47}
-.hero-img{height:480px;border-radius:28px;background:url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85') center/cover;box-shadow:var(--shadow)}
-section{max-width:1150px;margin:auto;padding:60px 20px}
-.section-head{text-align:center;margin-bottom:35px}
-.section-head h2{font-family:Georgia,serif;font-size:38px;margin-bottom:8px}
-.section-head p{color:var(--muted)}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
-.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:.25s}
-.card:hover{transform:translateY(-5px)}
-.product-img{height:310px;background-size:cover;background-position:center}
-.info{padding:19px}
-.info h3{font-family:Georgia,serif;font-size:21px;margin-bottom:5px}
-.price{font-size:19px;font-weight:800;color:var(--rose-dark);margin:7px 0 15px}
-.card .btn{width:100%;text-align:center}
-.about{background:#fff;border-radius:25px;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:45px;box-shadow:var(--shadow)}
-.about h2{font-family:Georgia,serif;font-size:36px;margin-bottom:15px}
-.about p{color:var(--muted);margin-bottom:12px}
-.features{display:grid;gap:15px}
-.feature{padding:20px;background:var(--cream);border-radius:16px}
-.feature b{display:block;margin-bottom:4px}
-.feature span{font-size:14px;color:var(--muted)}
-footer{background:#282225;color:#fff;margin-top:30px}
-.footer-inner{max-width:1150px;margin:auto;padding:35px 20px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.footer-inner p{color:#cfc6c8;font-size:14px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
-.modal.open{display:flex}
-.modal-box{background:#fff;width:min(560px,100%);max-height:92vh;overflow:auto;border-radius:24px;padding:28px}
-.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.modal-top h2{font-family:Georgia,serif;font-size:28px}
-.close{background:#f3edef;border:0;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}
-label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}
-input,select,textarea{width:100%;padding:13px 14px;border:1px solid #ddd;border-radius:12px;font:inherit;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--rose)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
-.full{grid-column:1/-1}
-.total{display:flex;justify-content:space-between;margin:20px 0;font-size:18px;font-weight:800;padding-top:15px;border-top:1px solid #eee}
-.submit{width:100%;font-size:16px}
-.note{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
-
-/* Admin */
-#adminPanel{display:none;position:fixed;inset:0;z-index:100;background:#f8f3f2;overflow:auto}
-.admin-wrap{max-width:1000px;margin:auto;padding:25px 18px 60px}
-.admin-head{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:20px}
-.admin-head h1{font-size:34px;margin:0}
-.admin-actions{display:flex;gap:8px;flex-wrap:wrap}
-.admin-card{background:#fff;border-radius:20px;padding:20px;box-shadow:var(--shadow);margin-bottom:20px}
-.admin-card h2{font-family:Georgia,serif;margin-bottom:15px}
-.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.admin-grid .full{grid-column:1/-1}
-.admin-products{display:grid;gap:12px}
-.admin-product{display:grid;grid-template-columns:80px 1fr auto;gap:15px;align-items:center;border:1px solid #eee;border-radius:15px;padding:10px}
-.admin-product img{width:80px;height:80px;object-fit:cover;border-radius:12px;background:#eee}
-.admin-product h3{margin-bottom:3px}
-.admin-product p{color:var(--rose-dark);font-weight:700}
-.small-btn{padding:9px 14px;border-radius:22px;border:0;cursor:pointer;font-weight:700}
-.edit-btn{background:#f3edef;color:var(--rose-dark)}
-.delete-btn{background:#282225;color:#fff}
-.secondary{background:#eee;color:#333}
-.admin-note{font-size:12px;color:var(--muted);margin-top:10px}
-#loginBox{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-.login-card{background:#fff;width:min(420px,100%);padding:30px;border-radius:24px;box-shadow:var(--shadow)}
-.login-card h1{font-size:34px;margin-bottom:8px}
-.login-card p{color:var(--muted);margin-bottom:20px}
-.error{color:#b00020;font-size:13px;margin-top:8px;display:none}
-.preview{max-width:120px;max-height:120px;border-radius:12px;margin-top:10px;display:none}
-
-@media(max-width:800px){
-nav{gap:12px}.hero{grid-template-columns:1fr;padding-top:40px}.hero-img{height:360px;order:-1}
-.products{grid-template-columns:1fr 1fr}.about{grid-template-columns:1fr;padding:30px}
-}
-@media(max-width:520px){
-.nav{height:64px}.logo{font-size:23px}nav{font-size:12px}
-.products{grid-template-columns:1fr}.product-img{height:340px}.form-grid,.admin-grid{grid-template-columns:1fr}
-.full,.admin-grid .full{grid-column:auto}.about h2{font-size:30px}
-.admin-product{grid-template-columns:60px 1fr}.admin-product img{width:60px;height:60px}.admin-product .admin-product-actions{grid-column:1/-1}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bella Sac - Sacs élégants pour femmes. Commande en ligne au Maroc.">
+  <title>Bella Sac | Sacs pour femmes</title>
+  <style>
+    :root{
+      --rose:#b76e79; --rose-dark:#8f4f5b; --cream:#fbf7f5;
+      --text:#292326; --muted:#766d70; --white:#fff;
+      --shadow:0 12px 35px rgba(50,25,30,.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--text);line-height:1.5}
+    a{text-decoration:none;color:inherit}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid #eee}
+    .nav{max-width:1150px;margin:auto;height:72px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-family:Georgia,serif;font-size:27px;font-weight:700;color:var(--rose-dark);letter-spacing:.5px}
+    nav{display:flex;gap:28px;font-size:14px;font-weight:600}
+    nav a:hover{color:var(--rose)}
+    .hero{max-width:1150px;margin:auto;padding:65px 20px 55px;display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center}
+    .eyebrow{color:var(--rose-dark);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:12px;margin-bottom:14px}
+    h1{font-family:Georgia,serif;font-size:clamp(42px,6vw,70px);line-height:1.03;margin-bottom:20px}
+    h1 span{color:var(--rose)}
+    .hero p{color:var(--muted);max-width:520px;font-size:17px;margin-bottom:28px}
+    .btn{display:inline-block;border:0;border-radius:30px;background:var(--rose-dark);color:white;padding:14px 25px;font-weight:700;cursor:pointer;transition:.2s}
+    .btn:hover{transform:translateY(-2px);background:#743d47}
+    .hero-img{height:480px;border-radius:28px;background:url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85') center/cover;box-shadow:var(--shadow)}
+    section{max-width:1150px;margin:auto;padding:60px 20px}
+    .section-head{text-align:center;margin-bottom:35px}
+    .section-head h2{font-family:Georgia,serif;font-size:38px;margin-bottom:8px}
+    .section-head p{color:var(--muted)}
+    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+    .card{background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:.25s}
+    .card:hover{transform:translateY(-5px)}
+    .product-img{height:310px;background-size:cover;background-position:center}
+    .p1{background-image:url('https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=800&q=85')}
+    .p2{background-image:url('https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=800&q=85')}
+    .p3{background-image:url('https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=800&q=85')}
+    .info{padding:19px}
+    .info h3{font-family:Georgia,serif;font-size:21px;margin-bottom:5px}
+    .price{font-size:19px;font-weight:800;color:var(--rose-dark);margin:7px 0 15px}
+    .card .btn{width:100%;text-align:center}
+    .about{background:#fff;border-radius:25px;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:45px;box-shadow:var(--shadow)}
+    .about h2{font-family:Georgia,serif;font-size:36px;margin-bottom:15px}
+    .about p{color:var(--muted);margin-bottom:12px}
+    .features{display:grid;gap:15px}
+    .feature{padding:20px;background:var(--cream);border-radius:16px}
+    .feature b{display:block;margin-bottom:4px}
+    .feature span{font-size:14px;color:var(--muted)}
+    footer{background:#282225;color:#fff;margin-top:30px}
+    .footer-inner{max-width:1150px;margin:auto;padding:35px 20px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-inner p{color:#cfc6c8;font-size:14px}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+    .modal.open{display:flex}
+    .modal-box{background:white;width:min(560px,100%);max-height:92vh;overflow:auto;border-radius:24px;padding:28px}
+    .modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .modal-top h2{font-family:Georgia,serif;font-size:28px}
+    .close{background:#f3edef;border:0;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}
+    label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}
+    input,select,textarea{width:100%;padding:13px 14px;border:1px solid #ddd;border-radius:12px;font:inherit;outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--rose)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+    .full{grid-column:1/-1}
+    .total{display:flex;justify-content:space-between;margin:20px 0;font-size:18px;font-weight:800;padding-top:15px;border-top:1px solid #eee}
+    .submit{width:100%;font-size:16px}
+    .note{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+    @media(max-width:800px){
+      nav{gap:12px} nav a:nth-child(2){display:none}
+      .hero{grid-template-columns:1fr;padding-top:40px}
+      .hero-img{height:360px;order:-1}
+      .products{grid-template-columns:1fr 1fr}
+      .about{grid-template-columns:1fr;padding:30px}
+    }
+    @media(max-width:520px){
+      .nav{height:64px}.logo{font-size:23px}
+      nav{font-size:12px}
+      .products{grid-template-columns:1fr}
+      .product-img{height:340px}
+      .form-grid{grid-template-columns:1fr}
+      .full{grid-column:auto}
+      .about h2{font-size:30px}
+    }
+  </style>
 </head>
 <body>
 
-<div id="site">
 <header>
-<div class="nav">
-<a class="logo" href="#">Bella Sac</a>
-<nav>
-<a href="#accueil">Accueil</a><a href="#produits">Nos sacs</a><a href="#apropos">À propos</a><a href="#contact">Contact</a>
-</nav>
-</div>
+  <div class="nav">
+    <a class="logo" href="#">Bella Sac</a>
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#produits">Nos sacs</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-<section class="hero" id="accueil">
-<div>
-<div class="eyebrow">Élégance au quotidien</div>
-<h1>Votre style,<br><span>votre sac.</span></h1>
-<p>Découvrez notre sélection de sacs élégants pour femmes. Des modèles tendance, pratiques et soigneusement choisis pour accompagner chaque moment.</p>
-<a class="btn" href="#produits">Découvrir la collection</a>
-</div>
-<div class="hero-img" aria-label="Sac élégant"></div>
-</section>
+  <section class="hero" id="accueil">
+    <div>
+      <div class="eyebrow">Élégance au quotidien</div>
+      <h1>Votre style,<br><span>votre sac.</span></h1>
+      <p>Découvrez notre sélection de sacs élégants pour femmes. Des modèles tendance, pratiques et soigneusement choisis pour accompagner chaque moment.</p>
+      <a class="btn" href="#produits">Découvrir la collection</a>
+    </div>
+    <div class="hero-img" aria-label="Sac élégant"></div>
+  </section>
 
-<section id="produits">
-<div class="section-head">
-<div class="eyebrow">Collection Bella Sac</div><h2>Nos sacs</h2><p>Choisissez votre modèle et commandez facilement.</p>
-</div>
-<div class="products" id="productsContainer"></div>
-</section>
+  <section id="produits">
+    <div class="section-head">
+      <div class="eyebrow">Collection Bella Sac</div>
+      <h2>Nos sacs</h2>
+      <p>Choisissez votre modèle et commandez facilement.</p>
+    </div>
 
-<section id="apropos">
-<div class="about">
-<div><div class="eyebrow">Pourquoi Bella Sac ?</div><h2>L'élégance, simplement.</h2>
-<p>Bella Sac propose des sacs féminins sélectionnés pour leur style et leur praticité.</p>
-<p>Notre objectif : vous offrir une expérience d'achat simple, rapide et agréable.</p></div>
-<div class="features">
-<div class="feature"><b>🚚 Livraison au Maroc</b><span>Recevez votre commande à l'adresse indiquée.</span></div>
-<div class="feature"><b>💳 Paiement à la livraison</b><span>Payez à la réception de votre commande.</span></div>
-<div class="feature"><b>✨ Sélection tendance</b><span>Des modèles choisis pour compléter votre style.</span></div>
-</div>
-</div>
-</section>
+    <div class="products">
+      <article class="card">
+        <div class="product-img p1"></div>
+        <div class="info">
+          <h3>Sac Élégance</h3>
+          <div class="price">179 DH</div>
+          <button class="btn order-btn" data-product="Sac Élégance" data-price="179">Commander</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="product-img p2"></div>
+        <div class="info">
+          <h3>Sac Chic</h3>
+          <div class="price">179 DH</div>
+          <button class="btn order-btn" data-product="Sac Chic" data-price="179">Commander</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="product-img p3"></div>
+        <div class="info">
+          <h3>Sac Bella</h3>
+          <div class="price">179 DH</div>
+          <button class="btn order-btn" data-product="Sac Bella" data-price="179">Commander</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="apropos">
+    <div class="about">
+      <div>
+        <div class="eyebrow">Pourquoi Bella Sac ?</div>
+        <h2>L'élégance, simplement.</h2>
+        <p>Bella Sac propose des sacs féminins sélectionnés pour leur style et leur praticité.</p>
+        <p>Notre objectif : vous offrir une expérience d'achat simple, rapide et agréable.</p>
+      </div>
+      <div class="features">
+        <div class="feature"><b>🚚 Livraison au Maroc</b><span>Recevez votre commande à l'adresse indiquée.</span></div>
+        <div class="feature"><b>💳 Paiement à la livraison</b><span>Payez à la réception de votre commande.</span></div>
+        <div class="feature"><b>✨ Sélection tendance</b><span>Des modèles choisis pour compléter votre style.</span></div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer id="contact">
-<div class="footer-inner">
-<div><strong>Bella Sac</strong><p>Des sacs qui font la différence.</p></div>
-<div><p>Instagram : @bella.sac1</p><p>WhatsApp : Ajoutez votre numéro</p></div>
-</div>
+  <div class="footer-inner">
+    <div><strong>Bella Sac</strong><p>Des sacs qui font la différence.</p></div>
+    <div><p>Instagram : @bella.sac1</p><p>WhatsApp : Ajoutez votre numéro</p></div>
+  </div>
 </footer>
-</div>
 
-<!-- Commande -->
 <div class="modal" id="orderModal">
-<div class="modal-box">
-<div class="modal-top"><h2>Passer commande</h2><button class="close" id="closeModal">×</button></div>
-<form id="orderForm">
-<div class="form-grid">
-<div class="full"><label for="product">Produit</label><select id="product" name="product"></select></div>
-<div><label for="name">Nom complet</label><input id="name" name="name" required placeholder="Votre nom complet"></div>
-<div><label for="phone">Numéro de téléphone</label><input id="phone" name="phone" required type="tel" placeholder="06 XX XX XX XX"></div>
-<div><label for="city">Ville</label><input id="city" name="city" required placeholder="Casablanca"></div>
-<div><label for="quantity">Quantité</label><input id="quantity" name="quantity" type="number" min="1" value="1" required></div>
-<div class="full"><label for="address">Adresse de livraison</label><textarea id="address" name="address" rows="3" required placeholder="Votre adresse complète"></textarea></div>
-</div>
-<div class="total"><span>Total</span><span id="total">0 DH</span></div>
-<button class="btn submit" type="submit">Confirmer la commande</button>
-<p class="note">Paiement à la livraison. Vos informations servent uniquement au traitement de la commande.</p>
-</form>
-</div>
-</div>
-
-<!-- Admin -->
-<div id="adminPanel">
-<div id="loginBox">
-<div class="login-card">
-<h1>Admin Bella Sac</h1>
-<p>Connectez-vous pour gérer les produits.</p>
-<label for="adminPassword">Mot de passe</label>
-<input id="adminPassword" type="password" placeholder="Mot de passe">
-<button class="btn" style="width:100%;margin-top:15px" id="loginBtn">Se connecter</button>
-<div class="error" id="loginError">Mot de passe incorrect.</div>
-<p class="admin-note">Mot de passe initial : <b>bella123</b>. Changez-le depuis la rubrique Sécurité après connexion.</p>
-</div>
-</div>
-
-<div class="admin-wrap" id="dashboard" style="display:none">
-<div class="admin-head">
-<h1>Tableau de bord</h1>
-<div class="admin-actions">
-<button class="small-btn secondary" id="backSite">Voir le site</button>
-<button class="small-btn delete-btn" id="logoutBtn">Déconnexion</button>
-</div>
-</div>
-
-<div class="admin-card">
-<h2 id="formTitle">Ajouter un produit</h2>
-<div class="admin-grid">
-<div><label>Nom du produit</label><input id="adminName" placeholder="Ex : Sac Élégance"></div>
-<div><label>Prix (DH)</label><input id="adminPrice" type="number" min="0" step="1" placeholder="179"></div>
-<div class="full"><label>Image du produit</label><input id="adminImage" type="file" accept="image/*"><img id="imagePreview" class="preview"></div>
-<div class="full"><label>Ou URL de l'image (facultatif)</label><input id="adminImageUrl" placeholder="https://..."></div>
-</div>
-<div class="admin-actions" style="margin-top:15px">
-<button class="btn" id="saveProduct">Ajouter le produit</button>
-<button class="small-btn secondary" id="cancelEdit" style="display:none">Annuler</button>
-</div>
-<p class="admin-note">Tu peux choisir une photo depuis ton téléphone/PC ou coller une URL d'image.</p>
-</div>
-
-<div class="admin-card">
-<h2>Mes produits</h2>
-<div class="admin-products" id="adminProducts"></div>
-</div>
-
-<div class="admin-card">
-<h2>Sécurité</h2>
-<label>Nouveau mot de passe</label>
-<input id="newPassword" type="password" placeholder="Nouveau mot de passe">
-<button class="btn" id="changePassword" style="margin-top:12px">Changer le mot de passe</button>
-<p class="admin-note">Important : cette version sauvegarde les produits dans le navigateur. Pour que les changements soient visibles sur tous les téléphones/PC, il faudra connecter une base de données.</p>
-</div>
-</div>
+  <div class="modal-box">
+    <div class="modal-top">
+      <h2>Passer commande</h2>
+      <button class="close" id="closeModal">×</button>
+    </div>
+    <form id="orderForm">
+      <div class="form-grid">
+        <div class="full">
+          <label for="product">Produit</label>
+          <select id="product" name="product"></select>
+        </div>
+        <div>
+          <label for="name">Nom complet</label>
+          <input id="name" name="name" required placeholder="Votre nom complet">
+        </div>
+        <div>
+          <label for="phone">Numéro de téléphone</label>
+          <input id="phone" name="phone" required type="tel" placeholder="06 XX XX XX XX">
+        </div>
+        <div>
+          <label for="city">Ville</label>
+          <input id="city" name="city" required placeholder="Casablanca">
+        </div>
+        <div>
+          <label for="quantity">Quantité</label>
+          <input id="quantity" name="quantity" type="number" min="1" value="1" required>
+        </div>
+        <div class="full">
+          <label for="address">Adresse de livraison</label>
+          <textarea id="address" name="address" rows="3" required placeholder="Votre adresse complète"></textarea>
+        </div>
+      </div>
+      <div class="total"><span>Total</span><span id="total">179 DH</span></div>
+      <button class="btn submit" type="submit">Confirmer la commande</button>
+      <p class="note">Paiement à la livraison. Vos informations servent uniquement au traitement de la commande.</p>
+    </form>
+  </div>
 </div>
 
 <script>
-/* ADMIN SECRET LINK: use #123bella@ after your normal site URL. */
-const DEFAULT_PRODUCTS=[
-{name:'Sac Élégance',price:179,image:'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=800&q=85'},
-{name:'Sac Chic',price:179,image:'https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=800&q=85'},
-{name:'Sac Bella',price:179,image:'https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=800&q=85'}
-];
-const WA_NUMBER='212600000000'; // <-- ضع هنا رقم واتساب ديالك بدون + أو مسافات
+  const modal = document.getElementById('orderModal');
+  const productSelect = document.getElementById('product');
+  const quantity = document.getElementById('quantity');
+  const total = document.getElementById('total');
+  const form = document.getElementById('orderForm');
 
-let products=JSON.parse(localStorage.getItem('bellaProducts')||'null')||DEFAULT_PRODUCTS;
-let editingIndex=-1;
+  const products = [
+    {name:'Sac Élégance', price:179},
+    {name:'Sac Chic', price:179},
+    {name:'Sac Bella', price:179}
+  ];
 
-function saveProducts(){localStorage.setItem('bellaProducts',JSON.stringify(products));}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+  products.forEach(p => {
+    const option = document.createElement('option');
+    option.value = p.name;
+    option.dataset.price = p.price;
+    option.textContent = ${p.name} — ${p.price} DH;
+    productSelect.appendChild(option);
+  });
 
-function renderSite(){
-const box=document.getElementById('productsContainer');
-box.innerHTML=products.length?'':'<p style="text-align:center;grid-column:1/-1;color:#766d70">Aucun produit pour le moment.</p>';
-products.forEach((p,i)=>{
-const card=document.createElement('article');card.className='card';
-card.innerHTML=`<div class="product-img" style="background-image:url('${esc(p.image)}')"></div>
-<div class="info"><h3>${esc(p.name)}</h3><div class="price">${Number(p.price)} DH</div>
-<button class="btn order-btn" data-index="${i}">Commander</button></div>`;
-box.appendChild(card);
-});
-document.querySelectorAll('.order-btn').forEach(b=>b.onclick=()=>openOrder(Number(b.dataset.index)));
-fillProductSelect();
-}
+  function updateTotal(){
+    const price = Number(productSelect.selectedOptions[0]?.dataset.price || 0);
+    total.textContent = ${price * Math.max(1, Number(quantity.value || 1))} DH;
+  }
 
-function fillProductSelect(selected){
-const sel=document.getElementById('product');sel.innerHTML='';
-products.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.dataset.price=p.price;o.textContent=${p.name} — ${p.price} DH;sel.appendChild(o);});
-if(selected!=null)sel.value=selected;
-updateTotal();
-}
-function updateTotal(){
-const p=products[Number(document.getElementById('product').value)];
-const q=Math.max(1,Number(document.getElementById('quantity').value||1));
-document.getElementById('total').textContent=p?${p.price*q} DH:'0 DH';
-}
-function openOrder(index){
-fillProductSelect(index);document.getElementById('quantity').value=1;updateTotal();
-document.getElementById('orderModal').classList.add('open');document.getElementById('name').focus();
-}
-document.getElementById('product').addEventListener('change',updateTotal);
-document.getElementById('quantity').addEventListener('input',updateTotal);
-document.getElementById('closeModal').onclick=()=>document.getElementById('orderModal').classList.remove('open');
-document.getElementById('orderModal').addEventListener('click',e=>{if(e.target.id==='orderModal')e.target.classList.remove('open')});
+  document.querySelectorAll('.order-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      productSelect.value = btn.dataset.product;
+      quantity.value = 1;
+      updateTotal();
+      modal.classList.add('open');
+      document.getElementById('name').focus();
+    });
+  });
 
-document.getElementById('orderForm').addEventListener('submit',e=>{
-e.preventDefault();
-const d=new FormData(e.target);const p=products[Number(d.get('product'))];
-const msg=Bonjour Bella Sac,%0A%0AJe souhaite passer une commande :%0AProduit : ${encodeURIComponent(p.name)}%0AQuantité : ${encodeURIComponent(d.get('quantity'))}%0ANom : ${encodeURIComponent(d.get('name'))}%0ATéléphone : ${encodeURIComponent(d.get('phone'))}%0AVille : ${encodeURIComponent(d.get('city'))}%0AAdresse : ${encodeURIComponent(d.get('address'))}%0A%0ATotal : ${encodeURIComponent(document.getElementById('total').textContent)};
-window.open(https://wa.me/${WA_NUMBER}?text=${msg},'_blank');
-});
+  productSelect.addEventListener('change', updateTotal);
+  quantity.addEventListener('input', updateTotal);
 
-function renderAdmin(){
-const box=document.getElementById('adminProducts');
-box.innerHTML=products.length?'':'<p style="color:#766d70">Aucun produit.</p>';
-products.forEach((p,i)=>{
-const row=document.createElement('div');row.className='admin-product';
-row.innerHTML=`<img src="${esc(p.image)}" alt="">
-<div><h3>${esc(p.name)}</h3><p>${Number(p.price)} DH</p></div>
-<div class="admin-product-actions admin-actions"><button class="small-btn edit-btn" data-edit="${i}">Modifier</button><button class="small-btn delete-btn" data-delete="${i}">Supprimer</button></div>`;
-box.appendChild(row);
-});
-document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>startEdit(Number(b.dataset.edit)));
-document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>deleteProduct(Number(b.dataset.delete)));
-}
-function startEdit(i){
-editingIndex=i;const p=products[i];
-document.getElementById('formTitle').textContent='Modifier le produit';
-document.getElementById('adminName').value=p.name;document.getElementById('adminPrice').value=p.price;
-document.getElementById('adminImageUrl').value=p.image.startsWith('data:')?'':p.image;
-document.getElementById('imagePreview').src=p.image;document.getElementById('imagePreview').style.display='block';
-document.getElementById('saveProduct').textContent='Enregistrer les modifications';
-document.getElementById('cancelEdit').style.display='inline-block';
-window.scrollTo({top:0,behavior:'smooth'});
-}
-function resetForm(){
-editingIndex=-1;document.getElementById('formTitle').textContent='Ajouter un produit';
-document.getElementById('adminName').value='';document.getElementById('adminPrice').value='';
-document.getElementById('adminImage').value='';document.getElementById('adminImageUrl').value='';
-document.getElementById('imagePreview').style.display='none';document.getElementById('saveProduct').textContent='Ajouter le produit';
-document.getElementById('cancelEdit').style.display='none';
-}
-function deleteProduct(i){
-if(!confirm(Supprimer "${products[i].name}" ?))return;
-products.splice(i,1);saveProducts();renderSite();renderAdmin();
-}
-document.getElementById('adminImage').addEventListener('change',e=>{
-const file=e.target.files[0];if(!file)return;
-const reader=new FileReader();reader.onload=()=>{document.getElementById('imagePreview').src=reader.result;document.getElementById('imagePreview').style.display='block';};reader.readAsDataURL(file);
-});
-document.getElementById('saveProduct').onclick=()=>{
-const name=document.getElementById('adminName').value.trim();
-const price=Number(document.getElementById('adminPrice').value);
-const file=document.getElementById('adminImage').files[0];
-const url=document.getElementById('adminImageUrl').value.trim();
-if(!name||isNaN(price)||price<0){alert('Veuillez remplir le nom et le prix.');return;}
-const finish=image=>{
-const product={name,price,image:image||'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=85'};
-if(editingIndex>=0)products[editingIndex]=product;else products.push(product);
-saveProducts();renderSite();renderAdmin();resetForm();alert('Produit enregistré avec succès.');
-};
-if(file){const reader=new FileReader();reader.onload=()=>finish(reader.result);reader.readAsDataURL(file);}
-else finish(url||document.getElementById('imagePreview').src||'');
-};
-document.getElementById('cancelEdit').onclick=resetForm;
+  document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'));
+  modal.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('open'); });
 
-const panel=document.getElementById('adminPanel');
-function openAdmin(){panel.style.display='block';document.getElementById('site').style.display='none';}
-function closeAdmin(){panel.style.display='none';document.getElementById('site').style.display='block';}
-function loggedIn(){return sessionStorage.getItem('bellaAdmin')==='1';}
-function showDashboard(){document.getElementById('loginBox').style.display='none';document.getElementById('dashboard').style.display='block';renderAdmin();}
-document.getElementById('loginBtn').onclick=()=>{
-const pass=document.getElementById('adminPassword').value;
-const saved=localStorage.getItem('bellaAdminPassword')||'bella123';
-if(pass===saved){sessionStorage.setItem('bellaAdmin','1');showDashboard();}
-else document.getElementById('loginError').style.display='block';
-};
-document.getElementById('adminPassword').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('loginBtn').click()});
-document.getElementById('logoutBtn').onclick=()=>{sessionStorage.removeItem('bellaAdmin');location.reload()};
-document.getElementById('backSite').onclick=closeAdmin;
-document.getElementById('changePassword').onclick=()=>{
-const p=document.getElementById('newPassword').value.trim();
-if(p.length<6){alert('Le mot de passe doit contenir au moins 6 caractères.');return;}
-localStorage.setItem('bellaAdminPassword',p);document.getElementById('newPassword').value='';alert('Mot de passe changé.');
-};
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const message =
+      Bonjour Bella Sac,%0A%0A +
+      Je souhaite passer une commande :%0A +
+      Produit : ${data.get('product')}%0A +
+      Quantité : ${data.get('quantity')}%0A +
+      Nom : ${data.get('name')}%0A +
+      Téléphone : ${data.get('phone')}%0A +
+      Ville : ${data.get('city')}%0A +
+      Adresse : ${data.get('address')}%0A%0A +
+      Total : ${total.textContent};
 
-renderSite();
-// رابط الإدارة السري: افتح الموقع ثم أضف هذا الجزء بعد # في الرابط.
-const SECRET_ADMIN_HASH = '#123bella@';
-if(location.hash === SECRET_ADMIN_HASH){
-  openAdmin();
-  if(loggedIn()) showDashboard();
-}
+    // Remplacez 212600000000 par votre numéro WhatsApp avant la mise en ligne.
+    const whatsappNumber = '212600000000';
+    window.open(https://wa.me/${whatsappNumber}?text=${message}, '_blank');
+  });
 </script>
 </body>
 </html>
