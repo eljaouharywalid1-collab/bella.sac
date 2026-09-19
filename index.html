@@ -465,8 +465,12 @@
 <main>
 
   <section class="hero" id="accueil">
+
     <div>
-      <div class="eyebrow">Élégance au quotidien</div>
+
+      <div class="eyebrow">
+        Élégance au quotidien
+      </div>
 
       <h1>
         Votre style,<br>
@@ -482,26 +486,38 @@
       <a class="btn" href="#produits">
         Découvrir la collection
       </a>
+
     </div>
 
-    <div class="hero-img" aria-label="Sac élégant"></div>
+    <div
+      class="hero-img"
+      aria-label="Sac élégant">
+    </div>
+
   </section>
 
 
   <section id="produits">
 
     <div class="section-head">
-      <div class="eyebrow">Collection Bella Sac</div>
 
-      <h2>Nos sacs</h2>
+      <div class="eyebrow">
+        Collection Bella Sac
+      </div>
+
+      <h2>
+        Nos sacs
+      </h2>
 
       <p>
         Choisissez votre modèle et commandez facilement.
       </p>
+
     </div>
 
 
     <div class="products">
+
 
       <article class="card">
 
@@ -509,7 +525,9 @@
 
         <div class="info">
 
-          <h3>Sac Élégance</h3>
+          <h3>
+            Sac Élégance
+          </h3>
 
           <div class="price">
             179 DH
@@ -533,7 +551,9 @@
 
         <div class="info">
 
-          <h3>Sac Chic</h3>
+          <h3>
+            Sac Chic
+          </h3>
 
           <div class="price">
             179 DH
@@ -557,7 +577,9 @@
 
         <div class="info">
 
-          <h3>Sac Bella</h3>
+          <h3>
+            Sac Bella
+          </h3>
 
           <div class="price">
             179 DH
@@ -574,7 +596,9 @@
 
       </article>
 
+
     </div>
+
   </section>
 
 
@@ -608,24 +632,41 @@
       <div class="features">
 
         <div class="feature">
-          <b>🚚 Livraison au Maroc</b>
+
+          <b>
+            🚚 Livraison au Maroc
+          </b>
+
           <span>
             Recevez votre commande à l'adresse indiquée.
           </span>
+
         </div>
 
+
         <div class="feature">
-          <b>💳 Paiement à la livraison</b>
+
+          <b>
+            💳 Paiement à la livraison
+          </b>
+
           <span>
             Payez à la réception de votre commande.
           </span>
+
         </div>
 
+
         <div class="feature">
-          <b>✨ Sélection tendance</b>
+
+          <b>
+            ✨ Sélection tendance
+          </b>
+
           <span>
             Des modèles choisis pour compléter votre style.
           </span>
+
         </div>
 
       </div>
@@ -642,21 +683,28 @@
   <div class="footer-inner">
 
     <div>
-      <strong>Bella Sac</strong>
+
+      <strong>
+        Bella Sac
+      </strong>
 
       <p>
         Des sacs qui font la différence.
       </p>
+
     </div>
 
+
     <div>
+
       <p>
         Instagram : @bella.sac1
       </p>
 
       <p>
-        WhatsApp : Ajoutez votre numéro
+        WhatsApp : 0774316048
       </p>
+
     </div>
 
   </div>
@@ -666,7 +714,9 @@
 
 <!-- FORMULAIRE DE COMMANDE -->
 
-<div class="modal" id="orderModal">
+<div
+  class="modal"
+  id="orderModal">
 
   <div class="modal-box">
 
@@ -688,6 +738,7 @@
     <form id="orderForm">
 
       <div class="form-grid">
+
 
         <div class="full">
 
@@ -804,6 +855,7 @@
         Confirmer la commande
       </button>
 
+
       <p class="note">
         Paiement à la livraison. Vos informations servent
         uniquement au traitement de la commande.
@@ -818,7 +870,8 @@
 
 <script>
 
-  const modal = document.getElementById('orderModal');
+  const modal =
+    document.getElementById('orderModal');
 
   const productSelect =
     document.getElementById('product');
@@ -853,7 +906,7 @@
   ];
 
 
-  /* Ajouter les produits dans le formulaire */
+  /* Ajouter les produits au formulaire */
 
   products.forEach(function(product){
 
@@ -867,8 +920,10 @@
       product.price;
 
     option.textContent =
-      product.name + ' — ' +
-      product.price + ' DH';
+      product.name +
+      ' — ' +
+      product.price +
+      ' DH';
 
     productSelect.appendChild(option);
 
@@ -893,17 +948,21 @@
       Number(quantity.value || 1);
 
     if(qty < 1){
+
       qty = 1;
+
       quantity.value = 1;
+
     }
 
     total.textContent =
-      (price * qty) + ' DH';
+      (price * qty) +
+      ' DH';
 
   }
 
 
-  /* Ouvrir le formulaire */
+  /* فتح الفورميل */
 
   document
     .querySelectorAll('.order-btn')
@@ -932,7 +991,7 @@
     });
 
 
-  /* Changer le produit */
+  /* تغيير المنتج */
 
   productSelect.addEventListener(
     'change',
@@ -940,7 +999,7 @@
   );
 
 
-  /* Changer la quantité */
+  /* تغيير الكمية */
 
   quantity.addEventListener(
     'input',
@@ -948,7 +1007,7 @@
   );
 
 
-  /* Fermer le formulaire */
+  /* إغلاق الفورميل */
 
   document
     .getElementById('closeModal')
@@ -962,7 +1021,7 @@
     );
 
 
-  /* Fermer en cliquant dehors */
+  /* إغلاق بالضغط خارج الفورميل */
 
   modal.addEventListener(
     'click',
@@ -978,7 +1037,7 @@
   );
 
 
-  /* Envoyer la commande sur WhatsApp */
+  /* إرسال الطلب إلى WhatsApp */
 
   form.addEventListener(
     'submit',
@@ -1011,59 +1070,57 @@
 
 
       const message =
-        'Bonjour Bella Sac,%0A%0A' +
+        'Bonjour Bella Sac,\n\n' +
 
-        'Je souhaite passer une commande :%0A' +
+        'Je souhaite passer une commande :\n\n' +
 
         'Produit : ' +
-        encodeURIComponent(product) +
-        '%0A' +
+        product +
+        '\n' +
 
         'Quantité : ' +
-        encodeURIComponent(qty) +
-        '%0A' +
+        qty +
+        '\n' +
 
         'Nom : ' +
-        encodeURIComponent(name) +
-        '%0A' +
+        name +
+        '\n' +
 
         'Téléphone : ' +
-        encodeURIComponent(phone) +
-        '%0A' +
+        phone +
+        '\n' +
 
         'Ville : ' +
-        encodeURIComponent(city) +
-        '%0A' +
+        city +
+        '\n' +
 
         'Adresse : ' +
-        encodeURIComponent(address) +
-        '%0A%0A' +
+        address +
+        '\n\n' +
 
         'Total : ' +
-        encodeURIComponent(total.textContent);
+        total.textContent;
 
 
       /*
-        ⚠️ بدّل هاد الرقم برقم WhatsApp ديالك.
+        رقم WhatsApp ديالك:
 
-        مثال:
-        0612345678
-        تصبح:
-        212612345678
+        0774316048
 
-        بلا +
-        وبلا 0 الأولى
+        الصيغة الدولية:
+
+        212774316048
       */
 
       const whatsappNumber =
-        '212600000000';
+        '212774316048';
 
 
       const whatsappURL =
         'https://wa.me/' +
         whatsappNumber +
         '?text=' +
-        message;
+        encodeURIComponent(message);
 
 
       window.open(
@@ -1075,7 +1132,7 @@
   );
 
 
-  /* حساب المجموع عند فتح الموقع */
+  /* حساب المجموع */
 
   updateTotal();
 
